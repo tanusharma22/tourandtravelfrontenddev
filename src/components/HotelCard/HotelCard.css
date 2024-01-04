@@ -30,11 +30,7 @@
     font-size: .875rem;
     padding: 0 4px 8px 4px;
 }
-.btn-wishlist{
-    padding: 1.25rem;
-    top:4px;
-    right:8px;
-}
+
 .favrite{
     color:#71717a;
 }
@@ -44,3 +40,13 @@
     font-size:1rem;
     margin-right:4px;
 }
+.button.btn-wishlist {
+    padding: 1.25rem;
+    top: 4px;
+    right: 8px;
+  }
+  
+  
+  .fav-selected {
+    color: red;
+  }

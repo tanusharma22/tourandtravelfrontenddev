@@ -21,7 +21,7 @@ export const Home = () => {
         propertyType,
         traveloRating,
         isCancelable}=useFilter()
-    const { isAuthModalOpen, isDropDownModalOpen } = useAuth();
+    const { isAuthModalOpen} = useAuth();
 
     useEffect(()=>{
        (async()=>{
