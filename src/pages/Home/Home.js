@@ -3,11 +3,11 @@ import { getHotelsByPrice,getHotelsByRoomsAndBeds,
     getHotelsByPropertyType,
     getHotelsByRatings,
     getHotelsByCancelation, } from "../../utils";
-import {Navbar,HotelCard,Categories,SearchStayWithDate,Filter} from "../../components";
+import {Navbar,HotelCard,Categories,SearchStayWithDate,Filter,AuthModal} from "../../components";
 import "./Home.css"
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import {useCategory,useDate,useFilter} from "../../context";
+import {useCategory,useDate,useFilter,useAuth} from "../../context";
 export const Home = () => {
     const [hotels,setHotels]=useState([]);
     const [testData,setTestData]=useState([])
@@ -21,6 +21,8 @@ export const Home = () => {
         propertyType,
         traveloRating,
         isCancelable}=useFilter()
+    const { isAuthModalOpen, isDropDownModalOpen } = useAuth();
+
     useEffect(()=>{
        (async()=>{
         try{
@@ -96,6 +98,8 @@ export const Home = () => {
                 }
                 {isSearchModalOpen &&<SearchStayWithDate/>}
                 {isFilterModalOpen&&<Filter/>}
+                {isAuthModalOpen && <AuthModal />}
+                
            
             
         </div>
