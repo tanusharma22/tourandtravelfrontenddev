@@ -1,11 +1,14 @@
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {Fragment, useEffect, useState} from "react";
-import {FinalPrice, HotelDetails, HotelImages, Navbar} from "../../components"
+import {FinalPrice, HotelDetails, HotelImages, Navbar,Alert,AuthModal} from "../../components"
+import {  useAlert ,useAuth} from "../../context";
 import "./SingleHotel.css"
 export const SingleHotel=()=>{
     const {id} =useParams();
     const [singleHotel,setSingleHotel]=useState();
+    const { alert } = useAlert();
+    const { isAuthModalOpen} = useAuth();
     useEffect(()=>{
         (async()=>{
             try{
@@ -22,7 +25,7 @@ export const SingleHotel=()=>{
     const {name,state}=singleHotel;
     
     return(
-        <Fragment>
+        <div className="relative">
             <Navbar/>
             <main className="single-hotel-page">
                 <p className="hotel-name-add">
@@ -35,6 +38,8 @@ export const SingleHotel=()=>{
                 </div>
 
             </main>
-        </Fragment>
+            {isAuthModalOpen && <AuthModal />}
+            {alert.open && <Alert />}
+            </div>
     );}
 };

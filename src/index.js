@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { CategoryProvider,DateProvider,FilterProvider,AuthProvider,WishlistProvider} from './context';
+import { CategoryProvider,DateProvider,FilterProvider,AuthProvider,WishlistProvider,AlertProvider} from './context';
 import  {BrowserRouter as Router} from "react-router-dom"
 
 
@@ -14,7 +14,9 @@ root.render(
             <FilterProvider>
                 <AuthProvider>
                     <WishlistProvider>
-                    <App/>
+                        <AlertProvider>
+                          <App/>
+                        </AlertProvider>
                     </WishlistProvider>
                 </AuthProvider>
             </FilterProvider>  
