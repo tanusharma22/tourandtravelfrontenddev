@@ -1,12 +1,13 @@
 import "./Auth.css";
 import { validateNumber, validatePassword } from "../../utils";
 import { loginHandler } from "../../services";
-import { useAuth} from "../../context";
+import { useAuth,useAlert} from "../../context";
 
 let isNumberValid, isPasswordValid;
 
 export const AuthLogin = () => {
   const { authDispatch, number, password } = useAuth();
+  const { setAlert } = useAlert();
 
 
   const handleNumberChange = (event) => {
@@ -38,7 +39,8 @@ export const AuthLogin = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (isNumberValid && isPasswordValid) {
-      const { accessToken, username } = await loginHandler(number, password);
+      try{
+      const { accessToken, username } = await loginHandler(number, password,setAlert);
       authDispatch({
         type: "SET_ACCESS_TOKEN",
         payload: accessToken,
@@ -46,7 +48,15 @@ export const AuthLogin = () => {
       authDispatch({
         type: "SET_USER_NAME",
         payload: username,
-      });
+      });}
+      
+      catch(err){console.log("unable to login lele")
+      setAlert({
+        open: true,
+        message: "Login UnSuccessful!",
+        type: "error"
+      })}
+     
 
     }
     authDispatch({
@@ -59,8 +69,9 @@ export const AuthLogin = () => {
 
   const handleTestCredentialsClick = async () => {
     const { accessToken, username } = await loginHandler(
-      7878787878,
-      "Abcd@1234"
+      9313010778,
+      "Jakp@56796",
+      setAlert
     );
     authDispatch({
       type: "SET_ACCESS_TOKEN",

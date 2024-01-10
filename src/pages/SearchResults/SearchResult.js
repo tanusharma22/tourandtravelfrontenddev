@@ -1,12 +1,13 @@
 import { Fragment,useEffect,useState} from "react"
-import { HotelCard, Navbar } from "../../components"
-import { useDate,useCategory } from "../../context"
+import { HotelCard, Navbar,Alert } from "../../components"
+import { useDate,useCategory,useAlert } from "../../context"
 import axios from "axios"
 
 export const SearchResults=()=>{
     const {destination}=useDate();
     const [hotels,setHotels]=useState([]);
     const {hotelCategory}=useCategory();
+    const { alert } = useAlert();
     useEffect(()=>{
         (async()=>{
             try{
@@ -36,7 +37,7 @@ export const SearchResults=()=>{
                 }
             </section>
 
-
+            {alert.open && <Alert />}
         </Fragment>
     );
 }

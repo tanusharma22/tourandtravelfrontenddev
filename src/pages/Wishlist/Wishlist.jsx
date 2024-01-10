@@ -1,13 +1,14 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { Navbar, HotelCard,AuthModal} from "../../components";
-import { useWishlist, useAuth } from "../../context";
+import { Navbar, HotelCard,AuthModal,Alert} from "../../components";
+import { useWishlist, useAuth ,useAlert} from "../../context";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
   const { wishlist } = useWishlist();
   const navigate = useNavigate();
   const { isAuthModalOpen} = useAuth();
+  const { alert } = useAlert();
 
   const handleClickHereClick = () => {
     navigate("/")
@@ -24,6 +25,7 @@ export const Wishlist = () => {
       </section> : <p className="d-flex justify-center">Wishlist Empty. &nbsp;<span className="click-here" onClick={handleClickHereClick}>Click here </span> &nbsp; to add to wishslit</p>
       }
     {isAuthModalOpen && <AuthModal />}
+    {alert.open && <Alert />}
     </Fragment>
     
   );
