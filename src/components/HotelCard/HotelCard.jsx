@@ -27,8 +27,6 @@ export const HotelCard=({hotel})=>{
               message: `Hotel:: ${name} added to wishlist`,
               type: "success"
             })
-            navigate("/wishlist")
-
           } else {
             wishlistDispatch({
               type: "REMOVE_FROM_WISHLIST",
