@@ -13,26 +13,42 @@ export const AuthLogin = () => {
   const handleNumberChange = (event) => {
     isNumberValid = validateNumber(event.target.value);
     if (isNumberValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Valid Number",
+        type: "success"
+      })
       authDispatch({
         type: "NUMBER",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Number");
+      setAlert({
+        open: true,
+        message: "Invalid Number",
+        type: "error"
+      })
     }
   };
 
   const handlePasswordChange = (event) => {
     isPasswordValid = validatePassword(event.target.value);
     if (isPasswordValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Valid Password",
+        type: "success"
+      })
       authDispatch({
         type: "PASSWORD",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Password");
+      setAlert({
+        open: true,
+        message: "Invalid Password",
+        type: "error"
+      })
     }
   };
 
