@@ -25,65 +25,105 @@ export const AuthSignup = () => {
   const handleNumberChange = (event) => {
     isNumberValid = validateNumber(event.target.value);
     if (isNumberValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Correct Number",
+        type: "success"
+      })
       authDispatch({
         type: "NUMBER",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Number");
+      setAlert({
+        open: true,
+        message: "Incorrect Number",
+        type: "error"
+      })
     }
   };
 
   const handleNameChange = (event) => {
     isNameValid = validateName(event.target.value);
     if (isNameValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Correct Name",
+        type: "success"
+      })
       authDispatch({
         type: "NAME",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Name");
+      setAlert({
+        open: true,
+        message: "Incorrect Name",
+        type: "error"
+      })
     }
   };
 
   const handleEmailChange = (event) => {
     isEmailValid = validateEmail(event.target.value);
     if (isEmailValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Valid Mail Id",
+        type: "success"
+      })
       authDispatch({
         type: "EMAIL",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Email");
+      setAlert({
+        open: true,
+        message: "Invalid MailId",
+        type: "error"
+      })
     }
   };
 
   const handlePasswordChange = (event) => {
     isPasswordValid = validatePassword(event.target.value);
     if (isPasswordValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Valid Password",
+        type: "success"
+      })
       authDispatch({
         type: "PASSWORD",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Password");
+      setAlert({
+        open: true,
+        message: "Invalid Password",
+        type: "error"
+      })
     }
   };
 
   const handleConfirmPasswordChange = (event) => {
     isConfirmPasswordValid = validatePassword(event.target.value);
     if (isConfirmPasswordValid) {
-      console.log("Valid Input");
+      setAlert({
+        open: true,
+        message: "Valid Password",
+        type: "success"
+      })
       authDispatch({
         type: "CONFIRM_PASSWORD",
         payload: event.target.value,
       });
     } else {
-      console.log("Invalid Password");
+      setAlert({
+        open: true,
+        message: "Invalid Password",
+        type: "error"
+      })
     }
   };
 
